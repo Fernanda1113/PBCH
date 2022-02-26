@@ -1,0 +1,8 @@
+[
+  {
+    "title": "Borrador",
+    "price": 700,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT17q0SPC_jE63J0fTboUGvgVnI8EX3GxK2Sg&usqp=CAU",
+    "id": 1
+  }
+]
