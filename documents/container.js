@@ -32,7 +32,7 @@ async save(product) {
             }
         }
     } catch (error) 
-    {   //Cuando no Existe el Archivo "productos.txt"
+    {   //Cuando no Existe el Archivo "products.txt"
         let dataObj = {
             title: product.title,
             price: product.price,
@@ -59,16 +59,11 @@ async save(product) {
 }
 
 async getById(id) {
-    let data = await fs.promises.readFile("./files/products.txt", "utf-8");
     try {
-        
+        let data = await fs.promises.readFile("./files/products.txt", "utf-8");
         let products = JSON.parse(data);
         let product = products.filter((product) => product.id === id);
-        // let result = products.filter((product) => product.id !== id);
-        // const producto = products.filter((x) => x.id == id);
-        // console.log(producto)
-        console.log(product.id)
-    if (product === id) {
+    if (product) {
         return { 
             status: "successs", 
             product: product 
@@ -76,7 +71,7 @@ async getById(id) {
     } else {
         return {
             status: "error",
-            // product: null,
+            product: null,
             message: "Producto no Encontrado"
         };
     }
@@ -95,7 +90,8 @@ async getAll() {
         console.log(products);
         return { 
             status: "success", 
-            message: "Productos Encontrados Exitosamente" 
+            message: "Productos Encontrados Exitosamente",
+            payload: products
         };
     } catch (error) {
         return {
@@ -143,6 +139,25 @@ async deleteAll() {
         status: "error",
         message: "No se Pudieron Eliminar los Productos"
     };
+    }
+}
+async getProductoRandom() {
+    try {
+        let data = await fs.promises.readFile("./files/productos.txt", "utf-8");
+        let products = JSON.parse(data);
+        let randomNumber = Math.floor(Math.random() * products.length);
+        console.log(randomNumber);
+        let randomProduct = products[randomNumber];
+        return {
+            status: "success",
+            message: "Producto encontrado",
+            payload: randomProduct
+        };
+    } catch (error) {
+        return {
+            status: "Error",
+            message: "No se pudo encontrar el producto" + error
+        };
     }
 }
 }

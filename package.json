@@ -1,0 +1,23 @@
+{
+  "name": "programa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handoff.js",
+  "scripts": {
+    "start":"node handoff.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fernanda1113/PBCH.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fernanda1113/PBCH/issues"
+  },
+  "homepage": "https://github.com/Fernanda1113/PBCH#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
