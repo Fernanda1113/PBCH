@@ -4,5 +4,35 @@
     "price": 700,
     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT17q0SPC_jE63J0fTboUGvgVnI8EX3GxK2Sg&usqp=CAU",
     "id": 1
+  },
+  {
+    "title": "Lapicero",
+    "price": 1000,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FKnUEuP36ACuHK5L6F9c9QNMWAhWGa_Lkg&usqp=CAU",
+    "id": 2
+  },
+  {
+    "title": "Colores",
+    "price": 1200,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj1zYs7TE3WosySYN_6Us7pSlz3QIMgmJ_LA&usqp=CAU",
+    "id": 3
+  },
+  {
+    "title": "Acuarelas",
+    "price": 27000,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLxbeX3eUnW4L2QWfkzJDUhnrViNkyF1d4eA&usqp=CAU",
+    "id": 4
+  },
+  {
+    "title": "Resaltador",
+    "price": 17000,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxzdf09xVwnoU0E80z92CkEY1SQ4xuea80VQ&usqp=CAU",
+    "id": 5
+  },
+  {
+    "title": "Cuaderno",
+    "price": 7000,
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTmiyDLyro2pQ88pAQMd16BEt5rxW71k_btQ&usqp=CAU",
+    "id": 6
   }
 ]
