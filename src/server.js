@@ -1,0 +1,33 @@
+import express from 'express'
+import { routerProducts } from './controller/router/routerProducts.js'
+import { routerCart } from './controller/router/routerCart.js'
+import { getErrorDetail } from './controller/getErrorDetail.js'
+
+const app = express()
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
+app.use('/api/productos', routerProducts)
+app.use('/api/carrito', routerCart)
+
+app.use('*', (req, res, next) => {
+    const newError = new Error('Ruta no valida')
+    newError.name = 'Bad Request'
+    next(newError)
+})
+
+app.use((err, req, res, next) => {
+    const errorDetail = getErrorDetail(err, req, res)    
+    res.status(errorDetail.error).json(errorDetail)
+
+})
+const PORT = process.env.PORT || 8080  
+
+const server = app.listen(PORT)
+
+server.on('listening', () => {
+    console.log(`Servidor http escuchando en el puerto ${server.address().port}`)
+});
+
+server.on("error", error => console.log(`Error en servidor: ${error}`))

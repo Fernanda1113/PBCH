@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": 1647899748001,
+    "items": [
+    "id": 1
+      {
+        "id": 4,
+        "nombre": "Acuarelas",
+        "descripcion": "Acuarelas de oleo",
+        "codigo": "1010",
+        "thumbail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLxbeX3eUnW4L2QWfkzJDUhnrViNkyF1d4eA&usqp=CAU",
+        "precio": "27000",
+        "stock": "5"
+      }
+    ]
+  },

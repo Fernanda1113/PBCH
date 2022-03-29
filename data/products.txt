@@ -1,38 +1,56 @@
 [
   {
-    "title": "Borrador",
+    "nombre": "Borrador",
+    "descripcion":"Borrador de nata",
+    "codigo":"1001",
     "price": 700,
     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT17q0SPC_jE63J0fTboUGvgVnI8EX3GxK2Sg&usqp=CAU",
-    "id": 1
+    "id": 1,
+    "stock":"12"
   },
   {
-    "title": "Lapicero",
+    "nombre": "Lapicero",
+    "descripcion":"Lapicero de tinta gel",
+    "codigo";"1002",
     "price": 1000,
     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4FKnUEuP36ACuHK5L6F9c9QNMWAhWGa_Lkg&usqp=CAU",
-    "id": 2
+    "id": 2,
+    "stock":"15"
   },
   {
-    "title": "Colores",
+    "nombre": "Colores",
+    "descripcion":"Caja de colores profesionales",
+    "codigo": "1003",
     "price": 1200,
     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj1zYs7TE3WosySYN_6Us7pSlz3QIMgmJ_LA&usqp=CAU",
-    "id": 3
+    "id": 3,
+    "stock":"13"
   },
   {
-    "title": "Acuarelas",
+    "nombre": "Acuarelas",
+    "descripcion":"Acuarelas de oleo",
+    "codigo":"1004",
     "price": 27000,
     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLxbeX3eUnW4L2QWfkzJDUhnrViNkyF1d4eA&usqp=CAU",
-    "id": 4
+    "id": 4,
+    "stock":"11"
   },
   {
-    "title": "Resaltador",
+    "nombre": "Resaltador",
+    "descripcion":"Resaltador verde",
+    "codigo":"1005",
     "price": 17000,
     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxzdf09xVwnoU0E80z92CkEY1SQ4xuea80VQ&usqp=CAU",
-    "id": 5
+    "id": 5,
+    "stock":"7"
   },
   {
-    "title": "Cuaderno",
+    "nombre": "Cuaderno",
+    "descripcion":"Cuaderno 100 hojas cuadriculado",
+    "codigo":"1006",
     "price": 7000,
     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTmiyDLyro2pQ88pAQMd16BEt5rxW71k_btQ&usqp=CAU",
-    "id": 6
+    "id": 6,
+    "stock":"13"
   }
 ]
