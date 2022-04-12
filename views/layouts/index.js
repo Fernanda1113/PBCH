@@ -36,4 +36,4 @@ $("#myChat").on("submit", (e) => {
   socket.emit("new-message", message);
   $("#text").val("")
   return false
-});
+}); 

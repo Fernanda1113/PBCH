@@ -14,4 +14,4 @@ class ApiProductos extends Contenedor {
         return nuevos
     }
  } 
- module.exports = ApiProductos
+ module.exports = ApiProductos;

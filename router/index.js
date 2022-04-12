@@ -11,4 +11,4 @@ router.use('/chat', chatRouter)
 router.use('/', fakerRouter)
 router.use('/', sessionRouter)
 
-module.exports = router;
+module.exports = router; 

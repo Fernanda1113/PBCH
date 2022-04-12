@@ -43,4 +43,4 @@ class ContenedorMemoria {
     }
 }
 
-module.exports = ContenedorMemoria
+module.exports = ContenedorMemoria;

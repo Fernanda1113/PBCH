@@ -17,4 +17,4 @@ server.get("/logout", (req, res) => {
   });
 });
 
-module.exports = server
+module.exports = server;

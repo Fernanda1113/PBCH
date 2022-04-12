@@ -13,4 +13,4 @@ const normalizeAndDenormalize = (what, obj) => {
     }  
 }
 
-module.exports = {normalizeAndDenormalize}
+module.exports = {normalizeAndDenormalize} 

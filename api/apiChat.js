@@ -31,4 +31,4 @@ class ApiChat {
     }
   }
 }
-module.exports = ApiChat;
+module.exports = ApiChat; 
