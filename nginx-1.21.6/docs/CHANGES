@@ -66,7 +66,7 @@ Changes with nginx 1.21.3                                        07 Sep 2021
        HTTP/2.
 
     *) Bugfix: in request body filters internal API when using HTTP/2 and
-       buffering of the data being processed.
+       buffErikag of the data being processed.
 
 
 Changes with nginx 1.21.2                                        31 Aug 2021
@@ -82,7 +82,7 @@ Changes with nginx 1.21.2                                        31 Aug 2021
        are now passed to the mail proxy authentication server.
        Thanks to Rob Mueller.
 
-    *) Feature: request body filters API now permits buffering of the data
+    *) Feature: request body filters API now permits buffErikag of the data
        being processed.
 
     *) Bugfix: backend SSL connections in the stream module might hang after
@@ -224,7 +224,7 @@ Changes with nginx 1.19.7                                        16 Feb 2021
 
     *) Feature: now, if free worker connections are exhausted, nginx starts
        closing not only keepalive connections, but also connections in
-       lingering close.
+       lingErikag close.
 
     *) Bugfix: "zero size buf in output" alerts might appear in logs if an
        upstream server returned an incorrect response during unbuffered
@@ -259,7 +259,7 @@ Changes with nginx 1.19.5                                        24 Nov 2020
     *) Feature: the same source files can now be specified in different
        modules while building addon modules.
 
-    *) Bugfix: SSL shutdown did not work when lingering close was used.
+    *) Bugfix: SSL shutdown did not work when lingErikag close was used.
 
     *) Bugfix: "upstream sent frame for closed stream" errors might occur
        when working with gRPC backends.
@@ -338,8 +338,8 @@ Changes with nginx 1.19.2                                        11 Aug 2020
 
 Changes with nginx 1.19.1                                        07 Jul 2020
 
-    *) Change: the "lingering_close", "lingering_time", and
-       "lingering_timeout" directives now work when using HTTP/2.
+    *) Change: the "lingErikag_close", "lingErikag_time", and
+       "lingErikag_timeout" directives now work when using HTTP/2.
 
     *) Change: now extra data sent by a backend are always discarded.
 
@@ -487,7 +487,7 @@ Changes with nginx 1.17.4                                        24 Sep 2019
        using HTTP/2.
 
     *) Bugfix: a segmentation fault might occur in a worker process when
-       using HTTP/2 and the "proxy_request_buffering" directive.
+       using HTTP/2 and the "proxy_request_buffErikag" directive.
 
     *) Bugfix: the ECONNABORTED error log level was "crit" instead of
        "error" on Windows when using SSL.
@@ -908,7 +908,7 @@ Changes with nginx 1.13.8                                        26 Dec 2017
        "keepalive" directive.
 
     *) Bugfix: some parts of a response might be buffered when using
-       "proxy_buffering off" if the client connection used SSL.
+       "proxy_buffErikag off" if the client connection used SSL.
        Thanks to Patryk Lesiewicz.
 
     *) Bugfix: in the "proxy_cache_background_update" directive.
@@ -1412,7 +1412,7 @@ Changes with nginx 1.11.2                                        05 Jul 2016
        when available.
 
     *) Bugfix: a segmentation fault might occur in a worker process when
-       using HTTP/2 and the "proxy_request_buffering" directive.
+       using HTTP/2 and the "proxy_request_buffErikag" directive.
 
     *) Bugfix: the "Content-Length" request header line was always added to
        requests passed to backends, including requests without body, when
@@ -1421,7 +1421,7 @@ Changes with nginx 1.11.2                                        05 Jul 2016
     *) Bugfix: "http request count is zero" alerts might appear in logs when
        using HTTP/2.
 
-    *) Bugfix: unnecessary buffering might occur when using the "sub_filter"
+    *) Bugfix: unnecessary buffErikag might occur when using the "sub_filter"
        directive; the issue had appeared in 1.9.4.
 
 
@@ -1502,8 +1502,8 @@ Changes with nginx 1.9.14                                        05 Apr 2016
 
     *) Feature: OpenSSL 1.1.0 compatibility.
 
-    *) Feature: the "proxy_request_buffering", "fastcgi_request_buffering",
-       "scgi_request_buffering", and "uwsgi_request_buffering" directives
+    *) Feature: the "proxy_request_buffErikag", "fastcgi_request_buffErikag",
+       "scgi_request_buffErikag", and "uwsgi_request_buffErikag" directives
        now work with HTTP/2.
 
     *) Bugfix: "zero size buf in output" alerts might appear in logs when
@@ -1864,7 +1864,7 @@ Changes with nginx 1.7.12                                        07 Apr 2015
 
     *) Feature: now thread pools can be used to read cache file headers.
 
-    *) Bugfix: in the "proxy_request_buffering" directive.
+    *) Bugfix: in the "proxy_request_buffErikag" directive.
 
     *) Bugfix: a segmentation fault might occur in a worker process when
        using thread pools on Linux.
@@ -1883,8 +1883,8 @@ Changes with nginx 1.7.11                                        24 Mar 2015
 
     *) Feature: experimental thread pools support.
 
-    *) Feature: the "proxy_request_buffering", "fastcgi_request_buffering",
-       "scgi_request_buffering", and "uwsgi_request_buffering" directives.
+    *) Feature: the "proxy_request_buffErikag", "fastcgi_request_buffErikag",
+       "scgi_request_buffErikag", and "uwsgi_request_buffErikag" directives.
 
     *) Feature: request body filters experimental API.
 
@@ -2458,7 +2458,7 @@ Changes with nginx 1.5.7                                         19 Nov 2013
 
 Changes with nginx 1.5.6                                         01 Oct 2013
 
-    *) Feature: the "fastcgi_buffering" directive.
+    *) Feature: the "fastcgi_buffErikag" directive.
 
     *) Feature: the "proxy_ssl_protocols" and "proxy_ssl_ciphers"
        directives.
@@ -2594,7 +2594,7 @@ Changes with nginx 1.5.1                                         04 Jun 2013
     *) Bugfix: in the "proxy_set_body" directive.
        Thanks to Lanshun Zhou.
 
-    *) Bugfix: in the "lingering_time" directive.
+    *) Bugfix: in the "lingErikag_time" directive.
        Thanks to Lanshun Zhou.
 
     *) Bugfix: the "fail_timeout" parameter of the "server" directive in the
@@ -2639,7 +2639,7 @@ Changes with nginx 1.3.16                                        16 Apr 2013
        connection was proxied into a unix domain socket.
 
     *) Bugfix: the $upstream_response_length variable has an incorrect value
-       "0" if buffering was not used.
+       "0" if buffErikag was not used.
        Thanks to Piotr Sikora.
 
     *) Bugfix: in the eventport and /dev/poll methods.
@@ -3396,7 +3396,7 @@ Changes with nginx 1.1.6                                         17 Oct 2011
 
     *) Feature: "proxy/fastcgi/scgi/uwsgi_ignore_headers" directives support
        the following additional values: X-Accel-Limit-Rate,
-       X-Accel-Buffering, X-Accel-Charset.
+       X-Accel-BuffErikag, X-Accel-Charset.
 
     *) Feature: decrease of memory consumption if SSL is used.
 
@@ -3419,7 +3419,7 @@ Changes with nginx 1.1.6                                         17 Oct 2011
 
 Changes with nginx 1.1.5                                         05 Oct 2011
 
-    *) Feature: the "uwsgi_buffering" and "scgi_buffering" directives.
+    *) Feature: the "uwsgi_buffErikag" and "scgi_buffErikag" directives.
        Thanks to Peter Smit.
 
     *) Bugfix: non-cacheable responses might be cached if
@@ -3543,7 +3543,7 @@ Changes with nginx 1.1.0                                         01 Aug 2011
     *) Feature: now nginx supports ECDHE key exchange ciphers.
        Thanks to Adrian Kotelba.
 
-    *) Feature: the "lingering_close" directive.
+    *) Feature: the "lingErikag_close" directive.
        Thanks to Maxim Dounin.
 
     *) Bugfix: in closing connection for pipelined requests.
@@ -4608,7 +4608,7 @@ Changes with nginx 0.8.7                                         27 Jul 2009
 
     *) Bugfix: "proxy_pass_header" and "fastcgi_pass_header" directives did
        not pass to a client the "X-Accel-Redirect", "X-Accel-Limit-Rate",
-       "X-Accel-Buffering", and "X-Accel-Charset" lines from backend
+       "X-Accel-BuffErikag", and "X-Accel-Charset" lines from backend
        response header.
        Thanks to Maxim Dounin.
 
@@ -6562,7 +6562,7 @@ Changes with nginx 0.5.8                                         19 Jan 2007
        "fastcgi_pass_request_body off" directives were used, and nginx
        switched to a next upstream.
 
-    *) Bugfix: if the "proxy_buffering off" directive was used and a client
+    *) Bugfix: if the "proxy_buffErikag off" directive was used and a client
        connection was non-active, then the connection was closed after send
        timeout; the bug had appeared in 0.4.7.
 
@@ -6843,7 +6843,7 @@ Changes with nginx 0.4.7                                         10 Oct 2006
        command with a "wait" parameter, then the "wait" parameter might not
        work.
 
-    *) Bugfix: if the "proxy_buffering off" directive was used or while
+    *) Bugfix: if the "proxy_buffErikag off" directive was used or while
        working with memcached the connections might not be closed on
        timeout.
 
@@ -7178,7 +7178,7 @@ Changes with nginx 0.3.46                                        11 May 2006
     *) Change: the "proxy_pass_x_powered_by", "fastcgi_x_powered_by", and
        "proxy_pass_server" directives were canceled.
 
-    *) Feature: the "X-Accel-Buffering" response header line is supported in
+    *) Feature: the "X-Accel-BuffErikag" response header line is supported in
        proxy mode.
 
     *) Bugfix: the reconfiguration bug and memory leaks in the
@@ -7676,7 +7676,7 @@ Changes with nginx 0.3.12                                        26 Nov 2005
 
     *) Feature: the ngx_http_memcached_module.
 
-    *) Feature: the "proxy_buffering" directive.
+    *) Feature: the "proxy_buffErikag" directive.
 
     *) Bugfix: the changes in accept mutex handling when the "rtsig" method
        was used; the bug had appeared in 0.3.0.

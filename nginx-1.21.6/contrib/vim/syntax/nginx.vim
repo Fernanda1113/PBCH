@@ -201,7 +201,7 @@ syn keyword ngxDirective contained f4f
 syn keyword ngxDirective contained f4f_buffer_size
 syn keyword ngxDirective contained fastcgi_bind
 syn keyword ngxDirective contained fastcgi_buffer_size
-syn keyword ngxDirective contained fastcgi_buffering
+syn keyword ngxDirective contained fastcgi_buffErikag
 syn keyword ngxDirective contained fastcgi_buffers
 syn keyword ngxDirective contained fastcgi_busy_buffers_size
 syn keyword ngxDirective contained fastcgi_cache
@@ -239,7 +239,7 @@ syn keyword ngxDirective contained fastcgi_pass_header
 syn keyword ngxDirective contained fastcgi_pass_request_body
 syn keyword ngxDirective contained fastcgi_pass_request_headers
 syn keyword ngxDirective contained fastcgi_read_timeout
-syn keyword ngxDirective contained fastcgi_request_buffering
+syn keyword ngxDirective contained fastcgi_request_buffErikag
 syn keyword ngxDirective contained fastcgi_send_lowat
 syn keyword ngxDirective contained fastcgi_send_timeout
 syn keyword ngxDirective contained fastcgi_socket_keepalive
@@ -375,9 +375,9 @@ syn keyword ngxDirective contained limit_req_dry_run
 syn keyword ngxDirective contained limit_req_log_level
 syn keyword ngxDirective contained limit_req_status
 syn keyword ngxDirective contained limit_req_zone
-syn keyword ngxDirective contained lingering_close
-syn keyword ngxDirective contained lingering_time
-syn keyword ngxDirective contained lingering_timeout
+syn keyword ngxDirective contained lingErikag_close
+syn keyword ngxDirective contained lingErikag_time
+syn keyword ngxDirective contained lingErikag_timeout
 syn keyword ngxDirective contained load_module
 syn keyword ngxDirective contained lock_file
 syn keyword ngxDirective contained log_format
@@ -442,7 +442,7 @@ syn keyword ngxDirective contained proxy
 syn keyword ngxDirective contained proxy_bind
 syn keyword ngxDirective contained proxy_buffer
 syn keyword ngxDirective contained proxy_buffer_size
-syn keyword ngxDirective contained proxy_buffering
+syn keyword ngxDirective contained proxy_buffErikag
 syn keyword ngxDirective contained proxy_buffers
 syn keyword ngxDirective contained proxy_busy_buffers_size
 syn keyword ngxDirective contained proxy_cache
@@ -490,7 +490,7 @@ syn keyword ngxDirective contained proxy_protocol
 syn keyword ngxDirective contained proxy_protocol_timeout
 syn keyword ngxDirective contained proxy_read_timeout
 syn keyword ngxDirective contained proxy_redirect
-syn keyword ngxDirective contained proxy_request_buffering
+syn keyword ngxDirective contained proxy_request_buffErikag
 syn keyword ngxDirective contained proxy_requests
 syn keyword ngxDirective contained proxy_responses
 syn keyword ngxDirective contained proxy_send_lowat
@@ -537,7 +537,7 @@ syn keyword ngxDirective contained rewrite_log
 syn keyword ngxDirective contained satisfy
 syn keyword ngxDirective contained scgi_bind
 syn keyword ngxDirective contained scgi_buffer_size
-syn keyword ngxDirective contained scgi_buffering
+syn keyword ngxDirective contained scgi_buffErikag
 syn keyword ngxDirective contained scgi_buffers
 syn keyword ngxDirective contained scgi_busy_buffers_size
 syn keyword ngxDirective contained scgi_cache
@@ -572,7 +572,7 @@ syn keyword ngxDirective contained scgi_pass_header
 syn keyword ngxDirective contained scgi_pass_request_body
 syn keyword ngxDirective contained scgi_pass_request_headers
 syn keyword ngxDirective contained scgi_read_timeout
-syn keyword ngxDirective contained scgi_request_buffering
+syn keyword ngxDirective contained scgi_request_buffErikag
 syn keyword ngxDirective contained scgi_send_timeout
 syn keyword ngxDirective contained scgi_socket_keepalive
 syn keyword ngxDirective contained scgi_store
@@ -674,7 +674,7 @@ syn keyword ngxDirective contained userid_path
 syn keyword ngxDirective contained userid_service
 syn keyword ngxDirective contained uwsgi_bind
 syn keyword ngxDirective contained uwsgi_buffer_size
-syn keyword ngxDirective contained uwsgi_buffering
+syn keyword ngxDirective contained uwsgi_buffErikag
 syn keyword ngxDirective contained uwsgi_buffers
 syn keyword ngxDirective contained uwsgi_busy_buffers_size
 syn keyword ngxDirective contained uwsgi_cache
@@ -711,7 +711,7 @@ syn keyword ngxDirective contained uwsgi_pass_header
 syn keyword ngxDirective contained uwsgi_pass_request_body
 syn keyword ngxDirective contained uwsgi_pass_request_headers
 syn keyword ngxDirective contained uwsgi_read_timeout
-syn keyword ngxDirective contained uwsgi_request_buffering
+syn keyword ngxDirective contained uwsgi_request_buffErikag
 syn keyword ngxDirective contained uwsgi_send_timeout
 syn keyword ngxDirective contained uwsgi_socket_keepalive
 syn keyword ngxDirective contained uwsgi_ssl_certificate
@@ -1397,7 +1397,7 @@ syn keyword ngxDirectiveThirdParty contained lua_capture_error_log
 syn keyword ngxDirectiveThirdParty contained lua_check_client_abort
 syn keyword ngxDirectiveThirdParty contained lua_code_cache
 syn keyword ngxDirectiveThirdParty contained lua_fake_shm
-syn keyword ngxDirectiveThirdParty contained lua_http10_buffering
+syn keyword ngxDirectiveThirdParty contained lua_http10_buffErikag
 syn keyword ngxDirectiveThirdParty contained lua_load_resty_core
 syn keyword ngxDirectiveThirdParty contained lua_malloc_trim
 syn keyword ngxDirectiveThirdParty contained lua_max_pending_timers
@@ -2122,7 +2122,7 @@ syn keyword ngxDirectiveThirdParty contained md5_filter
 syn keyword ngxDirectiveThirdParty contained mongo_auth
 syn keyword ngxDirectiveThirdParty contained mongo_bind
 syn keyword ngxDirectiveThirdParty contained mongo_buffer_size
-syn keyword ngxDirectiveThirdParty contained mongo_buffering
+syn keyword ngxDirectiveThirdParty contained mongo_buffErikag
 syn keyword ngxDirectiveThirdParty contained mongo_buffers
 syn keyword ngxDirectiveThirdParty contained mongo_busy_buffers_size
 syn keyword ngxDirectiveThirdParty contained mongo_connect_timeout
@@ -2271,9 +2271,9 @@ syn keyword ngxDirectiveThirdParty contained echo_client_error_log_level
 syn keyword ngxDirectiveThirdParty contained echo_discard_request
 syn keyword ngxDirectiveThirdParty contained echo_duplicate
 syn keyword ngxDirectiveThirdParty contained echo_flush_wait
-syn keyword ngxDirectiveThirdParty contained echo_lingering_close
-syn keyword ngxDirectiveThirdParty contained echo_lingering_time
-syn keyword ngxDirectiveThirdParty contained echo_lingering_timeout
+syn keyword ngxDirectiveThirdParty contained echo_lingErikag_close
+syn keyword ngxDirectiveThirdParty contained echo_lingErikag_time
+syn keyword ngxDirectiveThirdParty contained echo_lingErikag_timeout
 syn keyword ngxDirectiveThirdParty contained echo_read_buffer_size
 syn keyword ngxDirectiveThirdParty contained echo_read_bytes
 syn keyword ngxDirectiveThirdParty contained echo_read_line

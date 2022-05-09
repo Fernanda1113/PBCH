@@ -228,7 +228,7 @@
    large_client_header_buffers.
 
 *) Добавление: теперь при исчерпании свободных соединений nginx
-   закрывает не только keepalive-соединения, но и соединения в lingering
+   закрывает не только keepalive-соединения, но и соединения в lingErikag
    close.
 
 *) Исправление: в логах могли появляться сообщения "zero size buf in
@@ -264,7 +264,7 @@
    одни и те же исходные файлы в разных модулях.
 
 *) Исправление: SSL shutdown не работал при закрытии соединений с
-   ожиданием дополнительных данных (lingering close).
+   ожиданием дополнительных данных (lingErikag close).
 
 *) Исправление: при работе с gRPC-бэкендами могли возникать ошибки
    "upstream sent frame for closed stream".
@@ -343,8 +343,8 @@
 
 Изменения в nginx 1.19.1                                          07.07.2020
 
-*) Изменение: директивы lingering_close, lingering_time и
-   lingering_timeout теперь работают при использовании HTTP/2.
+*) Изменение: директивы lingErikag_close, lingErikag_time и
+   lingErikag_timeout теперь работают при использовании HTTP/2.
 
 *) Изменение: теперь лишние данные, присланные бэкендом, всегда
    отбрасываются.
@@ -496,7 +496,7 @@
    использовании HTTP/2.
 
 *) Исправление: при использовании HTTP/2 и директивы
-   proxy_request_buffering в рабочем процессе мог произойти segmentation
+   proxy_request_buffErikag в рабочем процессе мог произойти segmentation
    fault.
 
 *) Исправление: на Windows при использовании SSL уровень записи в лог
@@ -927,7 +927,7 @@
 *) Исправление: в директиве proxy_limit_rate при использовании с
    директивой keepalive.
 
-*) Исправление: при использовании "proxy_buffering off" часть ответа
+*) Исправление: при использовании "proxy_buffErikag off" часть ответа
    могла буферизироваться, если клиентское соединение использовало SSL.
    Спасибо Patryk Lesiewicz.
 
@@ -1437,7 +1437,7 @@
    IP_BIND_ADDRESS_NO_PORT, если она доступна.
 
 *) Исправление: при использовании HTTP/2 и директивы
-   proxy_request_buffering в рабочем процессе мог произойти segmentation
+   proxy_request_buffErikag в рабочем процессе мог произойти segmentation
    fault.
 
 *) Исправление: при использовании HTTP/2 к запросам, передаваемым на
@@ -1527,9 +1527,9 @@
 
 *) Добавление: совместимость с OpenSSL 1.1.0.
 
-*) Добавление: директивы proxy_request_buffering,
-   fastcgi_request_buffering, scgi_request_buffering и
-   uwsgi_request_buffering теперь работают при использовании HTTP/2.
+*) Добавление: директивы proxy_request_buffErikag,
+   fastcgi_request_buffErikag, scgi_request_buffErikag и
+   uwsgi_request_buffErikag теперь работают при использовании HTTP/2.
 
 *) Исправление: при использовании HTTP/2 в логах могли появляться
    сообщения "zero size buf in output".
@@ -1901,7 +1901,7 @@
 *) Добавление: теперь потоки могут использоваться для чтения заголовков
    файлов в кэше.
 
-*) Исправление: в директиве proxy_request_buffering.
+*) Исправление: в директиве proxy_request_buffErikag.
 
 *) Исправление: при использовании потоков на Linux в рабочем процессе
    мог произойти segmentation fault.
@@ -1921,9 +1921,9 @@
 
 *) Добавление: экспериментальная поддержка потоков.
 
-*) Добавление: директивы proxy_request_buffering,
-   fastcgi_request_buffering, scgi_request_buffering и
-   uwsgi_request_buffering.
+*) Добавление: директивы proxy_request_buffErikag,
+   fastcgi_request_buffErikag, scgi_request_buffErikag и
+   uwsgi_request_buffErikag.
 
 *) Добавление: экспериментальное API для обработки тела запроса.
 
@@ -2514,7 +2514,7 @@
 
 Изменения в nginx 1.5.6                                           01.10.2013
 
-*) Добавление: директива fastcgi_buffering.
+*) Добавление: директива fastcgi_buffErikag.
 
 *) Добавление: директивы proxy_ssl_protocols и proxy_ssl_ciphers.
    Спасибо Piotr Sikora.
@@ -2651,7 +2651,7 @@
 *) Исправление: в директиве proxy_set_body.
    Спасибо Lanshun Zhou.
 
-*) Исправление: в директиве lingering_time.
+*) Исправление: в директиве lingErikag_time.
    Спасибо Lanshun Zhou.
 
 *) Исправление: параметр fail_timeout директивы server в блоке upstream
@@ -3462,7 +3462,7 @@
    \xXX.
 
 *) Добавление: директивы "proxy/fastcgi/scgi/uwsgi_ignore_headers"
-   теперь поддерживают значения X-Accel-Limit-Rate, X-Accel-Buffering и
+   теперь поддерживают значения X-Accel-Limit-Rate, X-Accel-BuffErikag и
    X-Accel-Charset.
 
 *) Добавление: уменьшение потребления памяти при использовании SSL.
@@ -3488,7 +3488,7 @@
 
 Изменения в nginx 1.1.5                                           05.10.2011
 
-*) Добавление: директивы uwsgi_buffering и scgi_buffering.
+*) Добавление: директивы uwsgi_buffErikag и scgi_buffErikag.
    Спасибо Peter Smit.
 
 *) Исправление: при использовании proxy_cache_bypass могли быть
@@ -3615,7 +3615,7 @@
 *) Добавление: теперь nginx поддерживает шифры с обменом ECDHE-ключами.
    Спасибо Adrian Kotelba.
 
-*) Добавление: директива lingering_close.
+*) Добавление: директива lingErikag_close.
    Спасибо Максиму Дунину.
 
 *) Исправление: закрытия соединения для pipelined-запросов.
@@ -4701,7 +4701,7 @@
 
 *) Исправление: директивы proxy_pass_header и fastcgi_pass_header" не
    передавали клиенту строки "X-Accel-Redirect", "X-Accel-Limit-Rate",
-   "X-Accel-Buffering" и "X-Accel-Charset" из заголовка ответа бэкенда.
+   "X-Accel-BuffErikag" и "X-Accel-Charset" из заголовка ответа бэкенда.
    Спасибо Максиму Дунину.
 
 *) Исправление: в обработке строк "Last-Modified" и "Accept-Ranges" в
@@ -6698,7 +6698,7 @@
    "proxy_pass_request_body off" или "fastcgi_pass_request_body off", и
    делался переход к следующему бэкенду.
 
-*) Исправление: если при использовании директивы "proxy_buffering off"
+*) Исправление: если при использовании директивы "proxy_buffErikag off"
    соединение с клиентом было неактивно, то оно закрывалось по таймауту,
    заданному директивой send_timeout; ошибка появилась в 0.4.7.
 
@@ -6979,7 +6979,7 @@
    выполнялась ещё одна команда SSI include, то параметр wait мог не
    работать.
 
-*) Исправление: при использовании директивы "proxy_buffering off" или
+*) Исправление: при использовании директивы "proxy_buffErikag off" или
    при работе с memcached соединения могли не закрываться по таймауту.
 
 *) Исправление: nginx не запускался на 64-битных платформах, отличных от
@@ -7324,7 +7324,7 @@
    proxy_pass_server упразднены.
 
 *) Добавление: в режиме прокси поддерживается строка заголовка
-   "X-Accel-Buffering" в ответе бэкенда.
+   "X-Accel-BuffErikag" в ответе бэкенда.
 
 *) Исправление: ошибок и утечек памяти при переконфигурации в модуле
    ngx_http_perl_module.
@@ -7816,7 +7816,7 @@
 
 *) Добавление: модуль ngx_http_memcached_module.
 
-*) Добавление: директива proxy_buffering.
+*) Добавление: директива proxy_buffErikag.
 
 *) Исправление: изменение в работе с accept mutex при использовании
    метода rtsig; ошибка появилась в 0.3.0.
