@@ -1,0 +1,185 @@
+[2022-05-16T21:29:02.423] [ERROR] error - Error al conectarse a la base de datos!!
+[2022-05-16T22:23:03.833] [ERROR] error - Error: productos validation failed: nombre: Path `nombre` is required., descripcion: Path `descripcion` is required., codigo: Path `codigo` is required., thumbail: Path `thumbail` is required., precio: Path `precio` is required., stock: Path `stock` is required.
+    at ValidationError.inspect (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:775:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2008:40)
+    at Object.format (internal/util/inspect.js:1882:10)
+    at basicLayout (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\log4js\lib\layouts.js:64:57)
+    at app (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\log4js\lib\appenders\file.js:76:23)
+    at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    nombre: ValidatorError: Path `nombre` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaString.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'nombre',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    descripcion: ValidatorError: Path `descripcion` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaString.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'descripcion',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    codigo: ValidatorError: Path `codigo` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaNumber.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'codigo',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    thumbail: ValidatorError: Path `thumbail` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaString.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'thumbail',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    precio: ValidatorError: Path `precio` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaNumber.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'precio',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    stock: ValidatorError: Path `stock` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaNumber.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'stock',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'productos validation failed'
+}
+[2022-05-16T22:23:03.852] [ERROR] error - Error: Error en el save
+    at ProductosDaoMongoDb.save (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\src\contenedores\ContenedorMongoDb.js:53:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\routes\productos.js:73:5
+[2022-05-16T22:24:08.445] [ERROR] error - Error: productos validation failed: nombre: Path `nombre` is required., descripcion: Path `descripcion` is required., codigo: Path `codigo` is required., thumbail: Path `thumbail` is required., precio: Path `precio` is required., stock: Path `stock` is required.
+    at ValidationError.inspect (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\error\validation.js:48:26)
+    at internal/per_context/primordials.js:23:32
+    at formatValue (internal/util/inspect.js:775:19)
+    at inspect (internal/util/inspect.js:337:10)
+    at formatWithOptionsInternal (internal/util/inspect.js:2008:40)
+    at Object.format (internal/util/inspect.js:1882:10)
+    at basicLayout (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\log4js\lib\layouts.js:64:57)
+    at app (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\log4js\lib\appenders\file.js:76:23)
+    at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>) {
+  errors: {
+    nombre: ValidatorError: Path `nombre` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaString.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'nombre',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    descripcion: ValidatorError: Path `descripcion` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaString.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'descripcion',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    codigo: ValidatorError: Path `codigo` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaNumber.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'codigo',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    thumbail: ValidatorError: Path `thumbail` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaString.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'thumbail',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    precio: ValidatorError: Path `precio` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaNumber.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'precio',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    },
+    stock: ValidatorError: Path `stock` is required.
+        at validate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1330:13)
+        at SchemaNumber.SchemaType.doValidate (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\schematype.js:1314:7)
+        at D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\node_modules\mongoose\lib\document.js:2747:18
+        at processTicksAndRejections (internal/process/task_queues.js:75:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'stock',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'productos validation failed'
+}
+[2022-05-16T22:24:08.457] [ERROR] error - Error: Error en el save
+    at ProductosDaoMongoDb.save (D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\src\contenedores\ContenedorMongoDb.js:53:13)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async D:\erifer\Downloads\eriferBK\OKCoder\CoderHouse-Backend22475\routes\productos.js:73:5

@@ -1,190 +1,75 @@
-const express = require('express');
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const passport = require('passport');
-const parseArgs = require('minimist');
-const compression = require('compression')
-const logger = require('./utils/logger.js')
+const express = require("express");
+const path = require("path");
+const session = require("express-session");
+const passport = require("passport");
+const dotenv = require("dotenv").config();
 
-const { Strategy: FacebookStrategy } = require('passport-facebook');
-const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true};
+//Logs
+const logs = require("./src/logs/loggers");
+const loggerConsola = logs.getLogger("consola");
+const loggerError = logs.getLogger("error");
 
-const args = parseArgs(process.argv.slice(2), {alias: {p: 'PUERTO', m: "MODO"} });
-const PORT = process.env.PORT || args.PUERTO || 8080
-const MODO = args.MODO || 'fork' //
+
+
 const app = express();
-app.use(compression());
+const PORT = process.env.PORT || 8080;
 
-//
-const cluster = require('cluster')
-const numCPUs = require('os').cpus().length
+//MIDLEWARES
+app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public/views'))
+app.use(express.urlencoded({ extended: true })) /*app.use(express.json({ extended: true }));  body-parser*/
+// app.use(express.urlencoded());
 
-/* --------------------------------------------------------------------------- */
-/* MASTER */
-if (cluster.isMaster && MODO == 'cluster') {
-  console.log(numCPUs)
-  console.log(`PID MASTER ${process.pid}`)
-
-  for (let i = 0; i < numCPUs; i++) {
-      cluster.fork()
-  }
-
-  cluster.on('exit', worker => {
-      console.log('Worker', worker.process.pid, 'died', new Date().toLocaleString())
-      cluster.fork()
-  })
-}
-else {
-
-  /* --------------------------------------------------------------------------- */
-  /* WORKERS */
-
-
+  //Sesiones
 app.use(session({
-    store: MongoStore.create({
-      mongoOptions: advancedOptions    
-    }),
-    secret: `${process.env.SESSION_SECRET}`,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 60000
-    }
-}));
-
-require('dotenv').config();
-const FACEBOOK_CLIENT_ID = process.env.FB_CLIENT_ID ;
-const FACEBOOK_CLIENT_SECRET = process.env.FB_CLIENT_SECRET;
-
-
-
-passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_CLIENT_ID,
-    clientSecret: FACEBOOK_CLIENT_SECRET,
-    callbackURL: `http://localhost:${PORT}/auth/facebook/callback`,
-    profileFields: [ 'id', 'displayName', 'photos', 'emails' ],
-    scope: [ 'email' ]
-}, (accessToken, refreshToken, userProfile, done) => {
-    return done(null, userProfile);
-}));
-
-passport.serializeUser((user, cb) => {
-    cb(null, user);
-});
-
-passport.deserializeUser((obj, cb) => {
-    cb(null, obj);
-});
-
-app.use(express.json());
+    cookie: { maxAge: 600000 },
+    secret:`${process.env.SESSION_SECRET}`,
+    resave:false,
+    saveUninitialized:false,
+    rolling:true
+}))
 app.use(passport.initialize());
 app.use(passport.session());
 
+  //Routes
+const produtosRoute = require("./routes/productos");
+app.use("/api/productos", produtosRoute);
+const carritoRoute = require("./routes/carrito");
+app.use("/api/carrito", carritoRoute);
+const register = require("./routes/register");
+app.use("/register", register);
+const login = require("./routes/login");
+app.use("/login", login);
+const logout = require("./routes/logout");
+app.use("/logout", logout);
+const ordenes = require("./routes/ordenes");
+app.use("/api/ordenes", ordenes)
 
-const exphbs = require('express-handlebars');
-
-app.engine('hbs', exphbs.engine({
-  extname: 'hbs',
-  defaultLayout: 'index.hbs'
-}));
-
-// app.set('view engine', 'handlebars')
-app.use(express.static('public'));
-app.use(express.static('views'));
-app.set('views', './views');
-app.use(express.urlencoded({ extended: true }));
-
-/* Routes */
-
-app.all('/*', function (req, res, next) {
-  logger.info(`Recibe ${req.method} a ${req.path}`);
-  next();
-})
-
-app.get('/', function (req, res){
-  if (req.isAuthenticated()) {
-    res.render('loggeado.hbs', {nombre: req.user.displayName, 
-                                foto: req.user.photos[ 0 ].value,
-                                email: req.user.emails[ 0 ].value})
-  } else {
-    res.render('formulario.hbs')
-  }
+  //Manejo error 404
+app.use((req, res, next) => {
+  res.status(404);
+  res.send({error: -2, descripcion: `ruta ${req.originalUrl} metodo ${req.method} no implementada`});
 });
 
-/* Old form login*/
-app.post('/login', (req, res) => {
 
-    console.log("Login! ", req.body.email )
-    const username = req.body.email
-    const password = req.body.password
+//Servidor HTTP
+const http = require("http");
+const server = http.createServer(app);
 
-    req.session.username = username
-    res.redirect("/")
-})
+//Servidor de Socket
+const { Server } = require("socket.io");
+const { logger } = require("./src/nodemailer-twilio/nodemailerConfig");
+const io = new Server(server);
 
-
-app.get('/auth/facebook', passport.authenticate('facebook'));
-
-app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-  successRedirect: '/',
-  failureRedirect: '/faillogin'
-}));
-
-app.get('/faillogin', (req, res) => {
-  res.render('login-error', {});
-})
-
-app.post('/logout', (req, res) => {
-  const nombre = req.session.username
-  req.logout();
-  req.session.destroy(err => {
-        if (err) {
-          res.json({ status: 'Logout ERROR', body: err })
-        } else {
-          res.render('logout.hbs',{layout :"logout.hbs", nombre: nombre})
-        }
-      })
-})
-
-app.get('/info', (req, res) => {
-  res.send(`
-    <ul>
-    <li>Sistema operativo: ${process.platform}</li>
-    <li>Node version: ${process.version}</li>
-    <li>Path de ejecución: ${process.execPath}</li>
-    <li>Carpeta del proyecto: ${process.cwd()}</li>
-  <li>Argumentos de entrada: ${args}</li>
-  <li>ID: ${process.pid}</li>
-  <li>Memoria total reservada: ${`${Math.round(
-    process.memoryUsage().rss / 1024
-  )} KB`}</li>
-  <li>numcpu: ${numCPUs}</li>
-</ul>`);
-});
-  
-  // res.send({info: {
-  //   argumentos: process.argv,
-  //   os: process.platform,
-  //   node_ver: process.version,
-  //   uso_memoria: process.memoryUsage(), 
-  //   path_ejecucion: process.cwd(),
-  //   process_id: process.pid,
-  //   project_folder: process.title
-  // }});
-// })
-
-  const randomRouter = require('./routes/random');
-  app.use('/api/randoms',randomRouter)
-
-   app.use((req, res, next) => {
-    res.status(404);
-    logger.warn(`Not Found: ${req.method} a ${req.path}`);
-    next();
+io.on("connection", (socket)=> {
+  socket.emit("render", "")
+  socket.on("actualizacion", ()=>{
+    io.sockets.emit("render", "")
   })
+})
 
-  const server = app.listen(PORT, () => {
-    logger.info(`[PID: ${process.pid}] Servidor express escuchando en el puerto ${PORT}`)
+//COMIENZO SERVIDOR
+server.listen(PORT, () => {
+    loggerConsola.info(`Server is run on port ${server.address().port}`)
   })
-
-  server.on('error', error => logger.error(`Error en servidor: ${error}`))
-}
+  server.on('error', error => loggerError.error(`Error en servidor ${error}`))
