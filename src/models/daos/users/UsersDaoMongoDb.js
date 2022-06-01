@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 //Logs
-const logs = require("../../logs/loggers");
+const logs = require("../../../logs/loggers");
 const loggerConsola = logs.getLogger("consola");
 const loggerError = logs.getLogger("error");
 

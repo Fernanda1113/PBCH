@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 
-const logs = require("../logs/loggers");
+//Logs
+const logs = require("../../logs/loggers");
 const loggerConsola = logs.getLogger("consola");
 const loggerError = logs.getLogger("error");
 
+//Funciones utiles
 const asPOJO = (obj) => JSON.parse(JSON.stringify(obj));
 
 const renameField = (record, from, to) => {
@@ -18,9 +20,9 @@ const removeField = (record, field) => {
   return value;
 };
 
+//Conexion a la base de datos
 
 const main = () => {
-  const conexion = `mongodb+srv://${process.env.USERPASSMONGO}@cluster0.bl5oh.mongodb.net/sesiones?retryWrites=true&w=majority`
   mongoose.connect(conexion);
   mongoose.connection.on("open", () => {
     loggerConsola.info("Base de datos conectada con exito!!")
@@ -31,6 +33,7 @@ const main = () => {
 };
 main();
 
+//Comienzo clase Contenedor
 class ContenedorMongoDB {
   constructor(name, esquema) {
     this.coleccion = mongoose.model(name, esquema);
