@@ -3,7 +3,7 @@ const {
     getPtoIdService,
     createPtoService,
     updatePtoService,
-    deletePtoService,
+    deletePtoService
   } = require("../services/productosService");
   
   //Logs

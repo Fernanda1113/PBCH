@@ -250,7 +250,7 @@ function cashout(){
     }
     fetch(url, request)
     .then(function() {
-        alert("GRACIAS POR SU COMPRA VA A RECIBIR UN MENSAJE DE CONFIRMACION");
+        alert("GRACIAS POR SU COMPRA RECIBIRAS UN MENSAJE DE CONFIRMACION");
         window.location.href = "index.html"
     });
 }
@@ -266,7 +266,7 @@ function logout(){
         if (data) {
             console.log(data)
             let x = document.getElementById("logout");
-            x.innerHTML = "Hasta luego "+data.user
+            x.innerHTML = "Hasta pronto "+data.user
             setTimeout(function(){
                 window.location.href = "api/logout"
             }, 2000);

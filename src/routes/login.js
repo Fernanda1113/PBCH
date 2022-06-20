@@ -1,18 +1,13 @@
 const express = require("express");
-const passportConfig = require("../src/passport/passportConfig")
+const passportConfig = require("../passport/passportConfig")
+const {getUser} = require("../controllers/loginController")
 
 const app = express();
 const { Router } = express;
 const router = new Router();
 
 //GET LOGIN
-router.get("/", (req, res) => {
-  if (req.user){
-    res.send({user: req.user.nombre, avatar: req.user.avatar, carrito:req.user.carrito})
-  } else{
-    res.send(false)
-  }
-});
+router.get("/", getUser);
 
 //POST LOGIN
 router.post("/", passportConfig.authenticate("local-login",{

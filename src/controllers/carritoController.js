@@ -32,10 +32,10 @@ const {
         res.send(response.carrito);
       } else if (response.estado === "carritoFalse") {
         res.status(400);
-        res.send({ error: `Carrito con ID ${idCarrito} no existe` });
+        res.send({ error: `Carrito con ID ${idCarrito} no existe`});
       } else if (response.estado === "ptoFalse") {
         res.status(400);
-        res.send({ error: `Producto con ID ${idPto} no existe` });
+        res.send({ error: `Producto con ID ${idPto} no existe`});
       }
     } catch (error) {
       loggerError.error(error);

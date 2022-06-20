@@ -10,6 +10,5 @@ router.get("/", (req, res) => {
   res.redirect('/')
 });
 
-
 //EXPORT MODULO ROUTER
 module.exports = router;

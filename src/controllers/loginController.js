@@ -4,7 +4,7 @@ const getUser = (req, res) => {
       res.send({
         user: req.user.nombre,
         avatar: req.user.avatar,
-        carrito: req.user.carrito,
+        carrito: req.user.carrito
       });
     } else {
       res.send(false);

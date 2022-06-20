@@ -22,8 +22,6 @@ function darFecha() {
     fecha.getDate() +"/" +(fecha.getMonth() + 1) +" - " +fecha.getHours() +":" +fecha.getMinutes() +":" +fecha.getSeconds();
   return fechaOK;
 }
-
-
 //Sign up
 passport.use("local-signup", new LocalStrategy({
   usernameField:"username",
@@ -57,7 +55,7 @@ passport.use("local-signup", new LocalStrategy({
     
     const mailOptions = {
       from:"Servidor node.js",
-      to: "ger.prueba02@gmail.com",
+      to: "erifer1113@gmail.com",
       subject: "Nuevo registro",
       html : 'Datos del nuevo usuario <br>' + JSON.stringify(userNew)
     }

@@ -42,5 +42,5 @@ const createOrder = async (req, res) => {
 //EXPORT MODULO ROUTER
 module.exports = {
   getOrdenes,
-  createOrder,
+  createOrder
 };

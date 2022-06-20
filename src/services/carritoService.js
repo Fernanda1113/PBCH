@@ -142,5 +142,5 @@ module.exports = {
   deleteCarritoService,
   deletePtoFromCarritoService,
   getPtosFromCarritoService,
-  getCarritosService,
+  getCarritosService
 };
