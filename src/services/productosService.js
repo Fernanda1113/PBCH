@@ -1,88 +1,66 @@
-const Daos = require("../models/daos/configDb");
+import ProductsRepository from "../repositories/ProductsRepository.js";
+import { Product } from "../model/entities/Product.js";
+import { ProductDTO } from "../model/DTOs/ProductDTO.js";
+import ValidateDataService from "./validateDataService.js";
 
-const productos = Daos.productos;
+const validateDataService = new ValidateDataService();
 
-//Logs
-const logs = require("../logs/loggers");
-const loggerConsola = logs.getLogger("consola");
-const loggerError = logs.getLogger("error");
-
-//GET TODOS LOS PRODUCTOS
-const getPtosService = async () => {
-  try {
-    const response = await productos.getAll();
-    return response;
-  } catch (error) {
-    throw Error("Error en getPtosService");
+class ProductosService {
+  constructor() {
+    this.productsModel = new ProductsRepository();
   }
-};
 
-//GET PRODUCTO POR ID
-const getPtoIdService = async (id) => {
-  try {
-    const ptoId = await productos.getById(id);
-    if (Object.keys(ptoId).length != 0) {
-      return { estado: "ok", producto: ptoId };
-    } else {
-      return { estado: "ptoFalse" };
-    }
-  } catch (error) {
-    loggerError.error(error);
-    throw Error("Error en getPtoIdService");
-  }
-};
+  getAllProducts = async () => {
+    const productEntities = await this.productsModel.getAll();
+    const products = productEntities.map(product => new ProductDTO(product));
+    return products;
+  };
 
-//POST CON PTO NUEVO ENVIADO POR PARAMETRO
-const createPtoService = async (newPto) => {
-  try {
-    const addPto = await productos.save(newPto);
-    return addPto;
-  } catch (error) {
-    loggerError.error(error);
-    throw Error("Error en createPtoService");
-  }
-};
+  createProduct = async newProductData => {
+    const validatedData =
+      validateDataService.validatePostProductBody(newProductData);
+    if (validatedData && validatedData.error)
+      throw new Error(validatedData.error);
 
-//PUT MODIFICANDO SEGUN ID
-const updatePtoService = async (ptoMod, id) => {
-  try {
-    let flag = await productos.getById(id);
-    if (Object.keys(flag).length != 0) {
-      const pto = await productos.update(ptoMod);
-      return { estado: "ok", producto: pto };
-    } else {
-      return { estado: "ptoFalse" };
-    }
-  } catch (error) {
-    loggerError.error(error);
-    throw Error("Error en put modificacion productos");
-  }
-};
+    const newProductEntitie = new Product(validatedData);
+    const createdProductEntitie = await this.productsModel.save(
+      newProductEntitie
+    );
+    return new ProductDTO(createdProductEntitie);
+  };
 
-//DELETE SEGUN ID
-const deletePtoService = async (id) => {
-  try {
-    let flag = await productos.getById(id);
+  getProduct = async id => {
+    const validated = validateDataService.validateId(id);
+    if (validated && validated.error) throw new Error(validated.error);
 
-    if (Object.keys(flag).length != 0) {
-      await productos.deleteById(id);
-      const ptosAll = await productos.getAll();
-      return { estado: "ok", productos: ptosAll };
-    } else {
-      return { estado: "ptoFalse" };
-    }
-  } catch (error) {
-    loggerError.error(error);
-    throw Error("Error en deletePtoService");
-  }
-};
+    const productEntitie = await this.productsModel.getById(id);
+    return productEntitie ? new ProductDTO(productEntitie) : productEntitie;
+  };
 
-//EXPORT MODULO ROUTER
-module.exports = {
-  getPtosService,
-  getPtoIdService,
-  createPtoService,
-  updatePtoService,
-  deletePtoService,
-};
+  updateProduct = async (id, updateData) => {
+    const validated = validateDataService.validateId(id);
+    if (validated && validated.error) throw new Error(validated.error);
+    const validatedData =
+      validateDataService.validatePutProductBody(updateData);
+    if (validatedData && validatedData.error)
+      throw new Error(validatedData.error);
 
+    const updatedProductEntitie = await this.productsModel.updateById(
+      id,
+      validatedData
+    );
+    return updatedProductEntitie
+      ? new ProductDTO(updatedProductEntitie)
+      : updatedProductEntitie;
+  };
+
+  deleteProduct = async id => {
+    const validated = validateDataService.validateId(id);
+    if (validated && validated.error) throw new Error(validated.error);
+
+    const deletedId = await this.productsModel.deleteById(id);
+    return deletedId;
+  };
+}
+
+export default ProductosService;
