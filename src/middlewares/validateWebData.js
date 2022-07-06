@@ -2,8 +2,8 @@ import ValidateDataService from "../services/validateDataService.js";
 
 const validateDataService = new ValidateDataService();
 
-const validateRegisterPost = (req, res, next) => {
-  const { username, password } = req.body;
+const validateRegisterPost = (ctx, next) => {
+  const { username, password } = ctx.request.body;
   if (validateDataService.validateRegisterPost(username, password)) {
     next();
   } else {

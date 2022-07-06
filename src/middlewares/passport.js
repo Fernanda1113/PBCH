@@ -1,4 +1,4 @@
-import passport from "passport";
+import passport from "koa-passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import AuthUserService from "../services/authUserService.js";
 
@@ -8,7 +8,7 @@ passport.use(
   "register",
   new LocalStrategy(
     { passReqToCallback: true },
-    async (req, username, password, done) => {
+    async (request, username, password, done) => {
       return authUserService.verifyRegister({}, username, password, done);
     }
   )

@@ -33,37 +33,25 @@ const config = {
   mongoDb: {
     connectionString: process.env.MONGODB_URI || "mongodb://localhost/test",
     options: {
+      //useNewUrlParser: true, //No necesario desde mongoose 6
+      //useUnifiedTopology: true, //No necesario desde mongoose 6
       serverSelectionTimeoutMS: 5000
     }
   },
   mongoDbAtlas: {
     connectionString: process.env.MONGODB_ATLAS_URI,
     options: {
+      //useNewUrlParser: true, //No necesario desde mongoose 6
+      //useUnifiedTopology: true, //No necesario desde mongoose 6
       serverSelectionTimeoutMS: 7000
     }
   },
   session: {
-    mongoStoreOptions: {
-      mongoUrl:
-        process.env.PERS === "mongodb"
-          ? process.env.MONGODB_URI
-          : process.env.MONGODB_ATLAS_URI,
-      mongoOptions:
-        process.env.PERS === "mongodb"
-          ? { useUnifiedTopology: true }
-          : {
-              useNewUrlParser: true,
-              useUnifiedTopology: true
-            }
-    },
+    secret: process.env.SESSION_SECRET || "secret",
     options: {
-      secret: process.env.SESSION_SECRET || "secret",
-      resave: false,
-      saveUninitialized: false,
       rolling: true,
-      cookie: {
-        maxAge: 10 * 60 * 1000
-      }
+      secure: false,
+      maxAge: 10 * 60 * 1000
     }
   },
   logsFolder: path.join(__dirname, "logs")

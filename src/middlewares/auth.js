@@ -1,20 +1,19 @@
-const isAuthWeb = (req, res, next) => {
-    if (req.isAuthenticated()) {
+const isAuthWeb = (ctx, next) => {
+    if (ctx.isAuthenticated()) {
       return next();
     }
-    res.redirect("/login");
+    ctx.redirect("/login");
   };
   
-  const isAuthApi = (req, res, next) => {
-    if (req.isAuthenticated()) {
+  const isAuthApi = (ctx, next) => {
+    if (ctx.isAuthenticated()) {
       return next();
     }
-    res.status(401).json({
-      error: "No autenticado",
-      descripcion: `ruta '${req.baseUrl + req.path}' método '${
-        req.method
-      }' necesitas autenticación`
-    });
+    ctx.status = 401;
+  ctx.body = {
+    error: "No autenticado",
+    descripcion: `ruta '${ctx.path}' método '${ctx.method}' necesita autenticación`
+  };
   };
   
   export { isAuthWeb, isAuthApi };

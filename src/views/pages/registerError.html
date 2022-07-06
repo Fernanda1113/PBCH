@@ -2,19 +2,19 @@
 <html lang="en">
 
 <head>
-  <%- include("../partials/bootstrapHead.ejs")  %>
+  <%- include("../partials/bootstrapHead.html")  %>
 </head>
 
 <body>
   <main class="error-wrapper">
-    <h1 class="text-center">Error de Login</h1>
+    <h1 class="text-center">Error de Registro</h1>
     <% if (error&&error.length>0) { %>
     <p><%= error %></p>
     <% } else { %>
     <p>Algo salió mal durante el proceso.</p>
     <p>Por favor, vuelva a intentarlo</p>
     <% } %>
-    <a href="/login" class="btn btn-light mt-4">Volver</a>
+    <a href="/register" class="btn btn-light mt-4">Volver</a>
   </main>
 </body>
 

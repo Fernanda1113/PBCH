@@ -1,9 +1,11 @@
-import pkg from 'graphql';
-const { buildSchema } = pkg;
-import { graphqlHTTP } from "express-graphql";
+import Router from "koa-router";
+import { buildSchema } from "graphql";
+import { graphqlHTTP } from "koa-graphql";
+import { isAuthApi } from "../middlewares/auth.js";
 import ApiProductosController from "../controllers/apiProductosController.js";
 import ApiTestsController from "../controllers/apiTestsController.js";
 import ApiRandomsController from "../controllers/apiRandomsController.js";
+import Error404Controller from "../controllers/error404Controller.js";
 import config from "../config.js";
 
 class ApiRouter {
@@ -11,6 +13,7 @@ class ApiRouter {
     this.apiProductosController = new ApiProductosController();
     this.apiTestsController = new ApiTestsController();
     this.randomsController = new ApiRandomsController();
+    this.error404Controller = new Error404Controller();
   }
 
   start() {
@@ -59,11 +62,19 @@ class ApiRouter {
       deleteProduct: this.apiProductosController.deleteProduct
     };
 
-    return graphqlHTTP({
-      schema: schema,
-      rootValue: root,
-      graphiql: config.GRAPHIQL
-    });
+    router.all(
+      "/",
+      isAuthApi,
+      graphqlHTTP({
+        schema: schema,
+        rootValue: root,
+        graphiql: config.GRAPHIQL
+      })
+    );
+
+    router.all("/(.*)", this.error404Controller.getError404Api);
+
+    return router;
   }
 }
 

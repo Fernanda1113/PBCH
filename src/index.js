@@ -13,7 +13,7 @@ async function startServer() {
 
   const PORT = config.PORT;
 
-  const httpServer = new Httpserver(app);
+  const httpServer = new Httpserver(app.callback());
   const io = new IoServer(httpServer);
 
   MODE === "CLUSTER" && io.adapter(createAdapter());

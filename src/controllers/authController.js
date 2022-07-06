@@ -1,62 +1,52 @@
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 class AuthController {
-  getLogin = (req, res) => {
-    if (req.isAuthenticated()) return res.redirect("/");
-    res.sendFile("login.html", {
-      root: path.join(__dirname, "..", "views")
-    });
+  getLogin = async ctx => {
+    if (ctx.isAuthenticated()) return ctx.redirect("/");
+    await ctx.render("login");
   };
 
-  getLoginError = (req, res) => {
-    const { messages } = req.session;
+  getLoginError = async ctx => {
+    const { messages } = ctx.session;
     let message;
     if (messages) {
-      req.session.messages = [];
+      ctx.session.messages = [];
       message = messages[messages.length - 1];
     }
-    res.render("pages/loginError", {
+    await ctx.render("pages/loginError", {
       title: "Error de login",
       error: message
     });
   };
 
-  getRegister = (req, res) => {
-    if (req.isAuthenticated()) return res.redirect("/");
-    res.sendFile("register.html", {
-      root: path.join(__dirname, "..", "views")
-    });
+  getRegister = async ctx => {
+    if (ctx.isAuthenticated()) return ctx.redirect("/");
+    await ctx.render("register");
   };
 
-  getRegisterError = (req, res) => {
-    const { messages } = req.session;
+  getRegisterError = async ctx => {
+    const { messages } = ctx.session;
     let message;
     if (messages) {
-      req.session.messages = [];
+      ctx.session.messages = [];
       message = messages[messages.length - 1];
     }
-    res.render("pages/registerError", {
+    await ctx.render("pages/registerError", {
       title: "Error de registro",
       error: message
     });
   };
 
-  getLogout = (req, res) => {
-    if (req.isAuthenticated()) {
-      const { username } = req.user;
-      req.logout();
-      req.session.destroy(err => {
-        if (!err) {
-          res.clearCookie("connect.sid");
-          return res.render("./pages/logout", { title: "Logout", username });
-        }
-        res.redirect("/");
+  getLogout = async ctx => {
+    if (ctx.isAuthenticated()) {
+      const { username } = ctx.state.user;
+      ctx.logout();
+      ctx.session = null;
+      ctx.cookies.set("koa.sess", null, { signed: true });
+      return await ctx.render("./pages/logout", {
+        title: "Logout",
+        username
       });
     } else {
-      res.redirect("/");
+      ctx.redirect("/");
     }
   };
 }
